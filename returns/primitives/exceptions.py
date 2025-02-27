@@ -21,6 +21,9 @@ class UnwrapFailedError(Exception):
         super().__init__()
         self.halted_container = container
 
+    def __reduce__(self):
+        return (self.__class__, (self.halted_container,))
+
 
 class ImmutableStateError(AttributeError):
     """
